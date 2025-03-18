@@ -1,0 +1,66 @@
+/* עיצוב כללי לטופס */
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: Arial, sans-serif;
+
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* עיצוב הכותרת */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* עיצוב התוויות */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555;
+  }
+  
+  /* עיצוב שדות הקלט */
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* עיצוב הכפתור */
+ button {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  /* אפקט בעת ריחוף על הכפתור */
+  button:hover {
+    background: #218838;
+  }
+  
+  /* עיצוב עבור צ'קבוקס */
+  input[type="checkbox"] {
+    width: auto;
+    margin-left: 5px;
+  }
+  
