@@ -40,16 +40,26 @@ function AddProductForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const categoryName = formData.newCategory || formData.category;
-
+  
     if (!categoryName || !formData.name || !formData.price) {
       alert("חובה למלא שם קטגוריה, שם מוצר ומחיר.");
       return;
     }
-
+  
+    if (formData.lastOrderDate && formData.estimatedDelivery) {
+      const lastOrderDate = new Date(formData.lastOrderDate);
+      const estimatedDelivery = new Date(formData.estimatedDelivery);
+      
+      if (estimatedDelivery < lastOrderDate) {
+        alert("תאריך האספקה חייב להיות אחרי תאריך אחרון להזמנה.");
+        return;
+      }
+    }
+  
     try {
       const categoryRef = doc(db, 'categories', categoryName);
       await setDoc(categoryRef, {}, { merge: true });
-
+  
       const productRef = doc(db, `categories/${categoryName}/products`, formData.name);
       await setDoc(productRef, {
         name: formData.name,
@@ -63,13 +73,13 @@ function AddProductForm() {
         kosherForPassover: formData.kosherForPassover,
         passoverKosherType: formData.kosherForPassover ? formData.passoverKosherType : null
       });
-
+  
       alert("המוצר נוסף בהצלחה!");
     } catch (error) {
       console.error("שגיאה בהוספת מוצר:", error);
       alert("שגיאה בהוספת מוצר.");
     }
-  };
+  };  
 
   return (
     <div>
